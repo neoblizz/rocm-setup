@@ -1,0 +1,21 @@
+name: 'rocm-setup'
+description: 'Setup AMD ROCm™ Platform for GPUs'
+inputs:
+  rocm:
+    description: 'ROCm version'
+    required: false
+    default: '5.5.0'
+  method:
+    description: "Installation method, can be either 'amdgpu' or 'package-manager'. 'amdgpu' installs the ROCm packages using amdgpu-install script and the 'package-manager' method uses 'apt-get' like familiar packages."
+    required: false
+    default: 'local'
+  use-github-cache:
+    description: 'Use GitHub cache to cache downloaded installer on GitHub servers'
+    required: false
+    default: 'true'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+branding:
+  icon: box
+  color: red
