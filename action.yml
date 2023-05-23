@@ -8,7 +8,7 @@ inputs:
   method:
     description: "Installation method, can be either 'amdgpu' or 'package-manager'. 'amdgpu' installs the ROCm packages using amdgpu-install script and the 'package-manager' method uses 'apt-get' like familiar packages."
     required: false
-    default: 'local'
+    default: 'package-manager'
   use-github-cache:
     description: 'Use GitHub cache to cache downloaded installer on GitHub servers'
     required: false
