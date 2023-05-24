@@ -27,5 +27,3 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cm
     mkdir /opt/cmake && \
     ./cmake-${CMAKE_VERSION}-linux-x86_64.sh  --skip-license --prefix=/opt/cmake  &&\
     ln -s /opt/cmake/bin/* /usr/local/bin/
-
-CMD ["/usr/sbin/sshd", "-D"]
