@@ -12,6 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: rocm-setup
-      uses: neoblizz/rocm-setup@v0.1.0-beta
+      uses: neoblizz/rocm-setup@v0.1.1-beta
       with:
         rocm: '5.5.0'
