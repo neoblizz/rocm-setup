@@ -10,7 +10,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      IMAGE_NAME: my-image-name:${{ github.run_number }}
+      DOCKER_DEVICES: "--device=/dev/kfd --device=/dev/dri"
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build . --file Dockerfile --tag ${{ env.IMAGE_NAME }}
+    - name: Run the docker container
+      run: docker run --name rocm-container ${{ env.DOCKER_DEVICES }} ${{ env.IMAGE_NAME }}
