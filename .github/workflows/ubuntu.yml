@@ -12,7 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     env:
       IMAGE_NAME: my-image-name:${{ github.run_number }}
-      DOCKER_DEVICES: "--device=/dev/kfd --device=/dev/dri"
+      DOCKER_DEVICES: ""
+      # maawad: Eventually we need to uncomment this out
+      # See: https://github.com/neoblizz/rocm-setup/issues/5
+      #DOCKER_DEVICES: "--device=/dev/kfd --device=/dev/dri"
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
