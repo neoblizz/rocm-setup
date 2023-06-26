@@ -17,4 +17,6 @@ jobs:
         rocm: '5.5.0'
         
     - name: check-rocm-docker
-      run: docker container ls
+      run: |
+          docker image ls
+          docker run $IMAGE_NAME sh -c "hipcc --version" 
