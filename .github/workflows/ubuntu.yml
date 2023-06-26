@@ -21,4 +21,4 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag ${{ env.IMAGE_NAME }}
     - name: Run the docker container
-      run: docker run -it --name rocm-container ${{ env.DOCKER_DEVICES }} ${{ env.IMAGE_NAME }}
+      run: docker run -t --name rocm-container ${{ env.DOCKER_DEVICES }} ${{ env.IMAGE_NAME }}
