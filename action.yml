@@ -13,8 +13,8 @@ inputs:
     description: 'Use GitHub cache to cache downloaded installer on GitHub servers'
     required: false
     default: 'true'
-      build-name:
-  description: 'Name of the build'
+  build-name:
+    description: 'Name of the build'
     required: false
     default: 'rocm-5.5.0-ubuntu-jammy'
 runs:
