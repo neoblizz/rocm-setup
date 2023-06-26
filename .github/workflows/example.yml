@@ -15,18 +15,6 @@ jobs:
       uses: neoblizz/rocm-setup@main
       with:
         rocm: '5.5.0'
-    - name: Check if running inside Docker
-      run: |
-          if grep -q "/docker/" /proc/1/cgroup; then
-            echo "Running inside Docker"
-          else
-            echo "Not running inside Docker"
-          fi
-    - name: Check if Docker is installed
-      run: |
-          if command -v docker &> /dev/null; then
-            echo "Docker is installed"
-            docker images
-          else
-            echo "Docker is not installed"
-          fi
+        
+    - name: check-rocm
+      run: hipcc --version
