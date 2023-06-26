@@ -28,4 +28,6 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cm
     ./cmake-${CMAKE_VERSION}-linux-x86_64.sh  --skip-license --prefix=/opt/cmake  &&\
     ln -s /opt/cmake/bin/* /usr/local/bin/
 
-ENTRYPOINT [ "echo", "$HOME" ]
+COPY entrypoint.sh /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
