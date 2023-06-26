@@ -18,7 +18,25 @@ jobs:
       #DOCKER_DEVICES: "--device=/dev/kfd --device=/dev/dri"
     steps:
     - uses: actions/checkout@v3
+    
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag ${{ env.IMAGE_NAME }}
+    
     - name: Run the docker container
       run: docker run -t --name rocm-container ${{ env.DOCKER_DEVICES }} ${{ env.IMAGE_NAME }}
+   
+    - name: Check if running inside Docker
+      run: |
+          if grep -q "/docker/" /proc/1/cgroup; then
+            echo "Running inside Docker"
+          else
+            echo "Not running inside Docker"
+          fi
+    - name: Check if Docker is installed
+      run: |
+          if command -v docker &> /dev/null; then
+            echo "Docker is installed"
+            docker images
+          else
+            echo "Docker is not installed"
+          fi
