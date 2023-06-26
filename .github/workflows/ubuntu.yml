@@ -11,7 +11,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      IMAGE_NAME: my-image-name:${{ github.run_number }}
+      IMAGE_NAME: rocm-5.5.0-ubuntu-jammy
       DOCKER_DEVICES: ""
       # maawad: Eventually we need to uncomment this out
       # See: https://github.com/neoblizz/rocm-setup/issues/5
@@ -22,8 +22,9 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag ${{ env.IMAGE_NAME }}
     
-    - name: Run the docker container
-      run: docker run -t --name rocm-container ${{ env.DOCKER_DEVICES }} ${{ env.IMAGE_NAME }}
+    # we don't need to run anything anymore
+    #- name: Run the docker container
+    #  run: docker run -t --name rocm-container ${{ env.DOCKER_DEVICES }} ${{ env.IMAGE_TAG }}
    
     - name: Check if running inside Docker
       run: |
