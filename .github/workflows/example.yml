@@ -10,6 +10,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      IMAGE_NAME: rocm-5.5.0-ubuntu-jammy
+      
     steps:
     - name: rocm-setup
       uses: neoblizz/rocm-setup@main
@@ -19,4 +22,4 @@ jobs:
     - name: check-rocm-docker
       run: |
           docker image ls
-          docker run $IMAGE_NAME sh -c "hipcc --version" 
+          docker run --name ${{ env.IMAGE_NAME }} sh -c "hipcc --version"
